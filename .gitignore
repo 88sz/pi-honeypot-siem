@@ -1,0 +1,29 @@
+# Secrets: never commit these
+*.key
+*.pem
+*.crt
+client.keys
+authd.pass
+*passwords*.txt
+wazuh-install-files.tar
+.env
+
+# VM files (huge, and contain your system)
+*.ova
+*.vmdk
+*.vmx
+*.vmx.lck
+*.nvram
+*.vmsd
+*.vmxf
+
+# Raw honeypot logs (may contain attacker payloads; commit sanitized samples only)
+cowrie/logs/
+*.log
+*.json.*
+downloads/
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
