@@ -35,7 +35,7 @@ A home SOC lab: a Raspberry Pi 4 runs a **Cowrie SSH honeypot**, and a **Wazuh a
 - [x] Wazuh server VM imported and running
 - [x] Wazuh dashboard accessible
 - [ ] Default passwords changed (system + dashboard)
-- [x] Raspberry Pi set up (hardening still to do)
+- [x] Raspberry Pi set up and hardened (key-only SSH on 22222, UFW default deny, auto security updates)
 - [x] Wazuh agent installed on Pi and reporting "Active"
 - [ ] Cowrie installed and catching login attempts
 - [ ] Cowrie logs flowing into Wazuh
@@ -65,6 +65,7 @@ Real problems hit during the build and how they were solved. Details in `notes/`
 | VM had no IPv4 address (only IPv6 link-local) | Fixed network bridging so the VM gets a DHCP address from the home router |
 | Pi SSH "Connection refused" after flashing | SSH service was off; created an empty `ssh` file in the boot partition |
 | VM lost its IP after a host reboot | VMware bridge was on "Automatic"; locked VMnet0 to the Wi-Fi adapter in the Virtual Network Editor |
+| Locking down admin SSH without getting locked out | Tested key login before disabling passwords, validated config with `sshd -t`, kept a lifeline session open |
 | Agent install command had a 3-octet IP | Re-entered the manager IP and checked the command before running it |
 
 ## Lessons learned
