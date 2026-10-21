@@ -1,0 +1,24 @@
+# /etc/systemd/system/cowrie.service
+# Runs Cowrie at boot as the unprivileged cowrie user and restarts it if it crashes.
+
+[Unit]
+Description=Cowrie SSH Honeypot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+User=cowrie
+Group=cowrie
+WorkingDirectory=/home/cowrie/my-honeypot
+Environment=AUTHBIND_ENABLED=yes
+Environment=VIRTUAL_ENV=/home/cowrie/my-honeypot/cowrie-env
+Environment=PATH=/home/cowrie/my-honeypot/cowrie-env/bin:/usr/bin:/bin
+ExecStart=/home/cowrie/my-honeypot/cowrie-env/bin/cowrie start
+ExecStop=/home/cowrie/my-honeypot/cowrie-env/bin/cowrie stop
+PIDFile=/home/cowrie/my-honeypot/var/run/cowrie.pid
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

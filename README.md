@@ -37,7 +37,7 @@ A home SOC lab: a Raspberry Pi 4 runs a **Cowrie SSH honeypot**, and a **Wazuh a
 - [ ] Default passwords changed (system + dashboard)
 - [x] Raspberry Pi set up and hardened (key-only SSH on 22222, UFW default deny, auto security updates)
 - [x] Wazuh agent installed on Pi and reporting "Active"
-- [ ] Cowrie installed and catching login attempts
+- [x] Cowrie installed, catching logins/commands/downloads, and starting on boot
 - [ ] Cowrie logs flowing into Wazuh
 - [ ] Custom decoders and rules (MITRE ATT&CK mapped)
 - [ ] Attack simulation and detection testing
@@ -48,7 +48,7 @@ A home SOC lab: a Raspberry Pi 4 runs a **Cowrie SSH honeypot**, and a **Wazuh a
 
 ```
 ├── README.md          ← you are here
-├── notes/             ← session logs: what I did, what broke, how I fixed it
+├── notes/             ← session logs + commands-explained.md study guide
 ├── screenshots/       ← evidence for each milestone
 ├── diagrams/          ← architecture diagrams
 ├── wazuh/             ← custom decoders and rules
